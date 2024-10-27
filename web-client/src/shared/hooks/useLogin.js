@@ -29,6 +29,7 @@ export const useLogin = ({ onSuccess = () => {}, onError = () => {} }) => {
       const data = await Auth.login(email, password);
       dispatch(login(data));
       setLoading(false);
+      console.log('data', data);
       onSuccess(data);
     } catch (error) {
       setErrors({ serverError: error.message || 'Login faild failed' });

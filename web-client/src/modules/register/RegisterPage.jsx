@@ -4,7 +4,7 @@ import { Card, CenteredPageContainer } from '../../components/containers';
 import { FadeInUp } from '../../components/animations';
 import PasswordInput from '../../components/PasswordInput';
 import { SubTitle, Title } from '../../components/Typography';
-import { useRegister } from '@tic-tac/shared';
+import { useRegister } from '../../shared';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 

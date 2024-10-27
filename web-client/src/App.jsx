@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import Play from './pages/Play';
 import Login from './pages/Login';
 import CustomThemeProvider from './providers/CustomThemeProvider';
-import { ReduxProvider } from '@tic-tac/shared';
+import { ReduxProvider } from './shared';
 import Register from './pages/Register';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

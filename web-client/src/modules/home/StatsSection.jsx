@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FaRegFaceGrinStars } from 'react-icons/fa6';
 import { FaRegFaceFrown } from 'react-icons/fa6';
 import { FaRegFaceMeh } from 'react-icons/fa6';
-import { useTheme, useStats } from '@tic-tac/shared';
+import { useTheme, useStats } from '../../shared';
 
 const Container = styled.div`
   display: grid;

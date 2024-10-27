@@ -3,7 +3,7 @@ import { PrimaryButton } from '../../components/buttons';
 import Modal from '../../components/Modal';
 import { RiCloseLargeLine } from 'react-icons/ri';
 import { FaRegCircle } from 'react-icons/fa';
-import { useCreateNewSession } from '@tic-tac/shared';
+import { useCreateNewSession } from '../../shared';
 
 const Container = styled.div`
   padding-top: 20px;

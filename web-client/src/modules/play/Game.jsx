@@ -3,7 +3,7 @@ import { Card, CenteredPageContainer } from '../../components/containers';
 import { AiOutlineClose } from 'react-icons/ai';
 import { FaRegCircle } from 'react-icons/fa';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useGame } from '@tic-tac/shared';
+import { useGame } from '../../shared';
 import { FaRegFaceGrinStars } from 'react-icons/fa6';
 import { FaRegFaceFrown } from 'react-icons/fa6';
 import { FaRegFaceMeh } from 'react-icons/fa6';

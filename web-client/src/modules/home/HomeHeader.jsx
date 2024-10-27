@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { MdDarkMode } from 'react-icons/md';
 import { MdLightMode } from 'react-icons/md';
-import { useSelector, useDispatch, toggleTheme } from '@tic-tac/shared';
+import { toggleTheme } from '../../shared';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Container = styled.div`
   display: flex;

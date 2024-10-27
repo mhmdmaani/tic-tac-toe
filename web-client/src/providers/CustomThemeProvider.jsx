@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme, useSelector } from '@tic-tac/shared';
+import { lightTheme, darkTheme, useSelector } from '../shared';
 
 function CustomThemeProvider({ children }) {
   const currentTheme = useSelector((state) => state.theme.currentTheme);

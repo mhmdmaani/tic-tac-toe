@@ -1,7 +1,7 @@
 // PrivateRoute.js
 import { Navigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
-import { login, useDispatch } from '@tic-tac/shared';
+import { login, useDispatch } from '../shared';
 
 const PrivateRoute = ({ children }) => {
   const auth = localStorage.getItem('auth');

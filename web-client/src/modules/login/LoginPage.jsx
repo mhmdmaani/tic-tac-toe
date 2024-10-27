@@ -4,7 +4,7 @@ import { FadeInUp } from '../../components/animations';
 import PasswordInput from '../../components/PasswordInput';
 import { SubTitle, Title } from '../../components/Typography';
 import TextInput from '../../components/TextInput';
-import { useLogin } from '@tic-tac/shared';
+import { useLogin } from '../../shared';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
