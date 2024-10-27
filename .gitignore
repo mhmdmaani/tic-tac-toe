@@ -1,0 +1,14 @@
+node_modules
+*/node_modules
+
+
+
+
+# Virtual Environments
+env/
+venv/
+ENV/
+venv.bak/
+venv.cygwin/
+.venv/
+*/__pycache__/

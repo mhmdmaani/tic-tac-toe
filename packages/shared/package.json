@@ -1,0 +1,13 @@
+{
+  "name": "@tic-tac/shared",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "jwt-decode": "^4.0.0",
+    "react": "^18.3.1",
+    "react-redux": "^9.1.2",
+    "@reduxjs/toolkit": "^2.3.0"
+  },
+  "scripts": {}
+}
