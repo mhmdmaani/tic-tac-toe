@@ -19,6 +19,6 @@ export const authenticateJWT = (req, res, next) => {
 */
 
 export const authenticateJWT = expressjwt({
-  secret: process.env.JWT_SECRET,
+  secret: process.env.JWT_SECRET || 'secret',
   algorithms: ['HS256'],
 });
