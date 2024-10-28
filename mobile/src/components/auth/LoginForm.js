@@ -5,33 +5,15 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Alert,
   ActivityIndicator,
   Pressable,
-  Image,
-  ImageBackground,
 } from 'react-native';
 import { useLogin, useTheme } from '../../shared';
-import Toast from 'react-native-root-toast';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
 import FadeInUp from '../../components/animations/FadeInUp';
 
 export default function LoginForm({ onSignupPress }) {
-  const navigation = useNavigation();
   const { email, password, errors, loading, setEmail, setPassword, signIn } =
-    useLogin({
-      onSuccess: async (data) => {
-        Toast.show('Login successful');
-        await AsyncStorage.setItem('auth', JSON.stringify(data));
-        navigation.navigate('home');
-      },
-      onError: () => {
-        Toast.show('Login failed');
-        setEmail('');
-        setPassword('');
-      },
-    });
+    useLogin();
 
   const theme = useTheme();
 

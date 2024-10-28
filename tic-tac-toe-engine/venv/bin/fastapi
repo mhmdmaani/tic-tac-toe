@@ -1,4 +1,4 @@
-#!/Users/mathiasnord/projects/tic-tac-toe/tic-tac-toe-engine/venv/bin/python3
+#!/Users/mhmd/Documents/challenges/tictac/tic-tac/tic-tac-toe-engine/venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

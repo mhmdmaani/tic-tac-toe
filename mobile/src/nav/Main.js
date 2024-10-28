@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   NavigationContainer,
   DefaultTheme,
@@ -11,6 +11,8 @@ import Hallway from '../screens/Hallway';
 import HomeScreen from '../screens/HomeScreen';
 import GameScreen from '../screens/GameScreen';
 import AuthScreen from '../screens/AuthScreen';
+import { useDispatch } from 'react-redux';
+
 const Main = () => {
   const Stack = createNativeStackNavigator();
   const theme = useTheme();

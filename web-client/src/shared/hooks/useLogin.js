@@ -1,14 +1,17 @@
-import { useState } from 'react';
-import Auth from '../api/Auth';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { validateEmail, validatePassword } from '../utils/validate';
-import { login } from '../store/authSlice';
-
-export const useLogin = ({ onSuccess = () => {}, onError = () => {} }) => {
+import { loginAsync } from '../store/authSlice';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+export const useLogin = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const loading = useSelector((state) => state.auth.loading);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   const dispatch = useDispatch();
 
   const signIn = async () => {
@@ -21,22 +24,15 @@ export const useLogin = ({ onSuccess = () => {}, onError = () => {} }) => {
       setErrors({ password: 'Password must be at least 5 characters long.' });
       return;
     }
-
-    try {
-      setLoading(true);
-      setErrors({});
-
-      const data = await Auth.login(email, password);
-      dispatch(login(data));
-      setLoading(false);
-      console.log('data', data);
-      onSuccess(data);
-    } catch (error) {
-      setErrors({ serverError: error.message || 'Login faild failed' });
-      onError(error);
-      setLoading(false);
-    }
+    setErrors({});
+    dispatch(loginAsync({ email, password }));
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
 
   return {
     email,

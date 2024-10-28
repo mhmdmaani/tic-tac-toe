@@ -32,4 +32,13 @@ export class GameSession {
     });
     return data;
   }
+
+  static async checkBoard({ board }) {
+    const { data } = await axiosInstance.get('/game/check_board', {
+      params: {
+        board,
+      },
+    });
+    return data;
+  }
 }

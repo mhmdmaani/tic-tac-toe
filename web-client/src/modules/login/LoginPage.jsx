@@ -5,18 +5,20 @@ import PasswordInput from '../../components/PasswordInput';
 import { SubTitle, Title } from '../../components/Typography';
 import TextInput from '../../components/TextInput';
 import { useLogin } from '../../shared';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+const SecondaryButton = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.primary.main};
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 20px;
+`;
 
 function LoginPage() {
-  const navigate = useNavigate();
-  const { signIn, loading, email, setEmail, password, setPassword } = useLogin({
-    onSuccess: (data) => {
-      localStorage.setItem('auth', data);
-      navigate('/home');
-      toast.success('Login successful');
-    },
-  });
+  const { signIn, loading, email, setEmail, password, setPassword } =
+    useLogin();
   return (
     <CenteredPageContainer image={'../../../images/LoginBg.webp'}>
       <FadeInUp>
@@ -39,6 +41,10 @@ function LoginPage() {
           <PrimaryButton disabled={loading} onClick={signIn}>
             Login
           </PrimaryButton>
+
+          <SecondaryButton to='/register'>
+            Do not have an account? Register
+          </SecondaryButton>
         </Card>
       </FadeInUp>
     </CenteredPageContainer>

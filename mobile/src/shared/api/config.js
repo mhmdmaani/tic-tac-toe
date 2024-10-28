@@ -5,12 +5,9 @@ export const BASE_URL = 'http://localhost:8080';
 
 const getToken = async () => {
   try {
-    const auth = await AsyncStorage.getItem('auth');
-    const authJSON = JSON.parse(auth);
-    const token = authJSON?.token;
-    return token ? `Bearer ${token}` : null;
+    const token = await AsyncStorage.getItem('jwtToken');
+    return token ? `Bearer ${token.replace(/['"]+/g, '')}` : null;
   } catch (error) {
-    console.error('Error getting token from AsyncStorage', error);
     return null;
   }
 };

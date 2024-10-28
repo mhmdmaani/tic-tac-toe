@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { MdDarkMode } from 'react-icons/md';
 import { MdLightMode } from 'react-icons/md';
-import { toggleTheme } from '../../shared';
+import { toggleTheme, logout } from '../../shared';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Container = styled.div`
@@ -22,6 +22,21 @@ const ToggleThemeButton = styled.button`
   justify-content: center;
   align-items: center;
   color: ${({ theme }) => theme.colors.text.main};
+  cursor: pointer;
+`;
+
+const LogoutButton = styled.button`
+  border: none;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme }) => theme.colors.text.main};
+  cursor: pointer;
+`;
+const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 
 export default function HomeHeader() {
@@ -32,16 +47,23 @@ export default function HomeHeader() {
   const handleToggle = () => {
     dispatch(toggleTheme());
   };
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
     <Container>
       <GreetingText>Welcome, {user?.name}</GreetingText>
-      <ToggleThemeButton onClick={handleToggle}>
-        {currentTheme === 'light' ? (
-          <MdDarkMode size={30} />
-        ) : (
-          <MdLightMode size={30} />
-        )}
-      </ToggleThemeButton>
+      <ButtonsContainer>
+        <ToggleThemeButton onClick={handleToggle}>
+          {currentTheme === 'light' ? (
+            <MdDarkMode size={30} />
+          ) : (
+            <MdLightMode size={30} />
+          )}
+        </ToggleThemeButton>
+        <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
+      </ButtonsContainer>
     </Container>
   );
 }

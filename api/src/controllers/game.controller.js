@@ -1,6 +1,7 @@
 import express from 'express';
 import { authenticateJWT } from '../middleware/auth.middleware.js';
 import { GameService } from '../services/Game.service.js';
+import { ExternalService } from '../services/External.service.js';
 
 const router = express.Router();
 
@@ -49,4 +50,16 @@ router.get('/', authenticateJWT, async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
+
+router.get('/check_board', authenticateJWT, async (req, res) => {
+  try {
+    // get query params
+    const { board } = req.query;
+    const data = await ExternalService.checkGameStatus({ board });
+    res.json(data);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 export default router;

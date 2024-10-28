@@ -4,6 +4,7 @@ import Modal from '../../components/Modal';
 import { RiCloseLargeLine } from 'react-icons/ri';
 import { FaRegCircle } from 'react-icons/fa';
 import { useCreateNewSession } from '../../shared';
+import { useTheme } from '../../shared';
 
 const Container = styled.div`
   padding-top: 20px;
@@ -48,6 +49,7 @@ export default function StartNewButton() {
     setSelectedPlayer,
     onStartGame,
   } = useCreateNewSession();
+  const theme = useTheme();
   return (
     <Container>
       <PrimaryButton onClick={() => setOpenForm(true)}>
@@ -60,7 +62,7 @@ export default function StartNewButton() {
             onClick={() => setSelectedPlayer('x')}
             selected={selectedPlayer === 'x'}
           >
-            <RiCloseLargeLine size={50} />
+            <RiCloseLargeLine size={50} color={theme.colors.primary.main} />
             <ItemText>You </ItemText>
           </SelectItem>
 
@@ -68,7 +70,7 @@ export default function StartNewButton() {
             onClick={() => setSelectedPlayer('o')}
             selected={selectedPlayer === 'o'}
           >
-            <FaRegCircle size={50} />
+            <FaRegCircle size={50} color={theme.colors.yellow.main} />
             <ItemText>Computer</ItemText>
           </SelectItem>
         </ChooseContainer>

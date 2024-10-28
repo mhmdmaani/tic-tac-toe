@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Title = styled.h1`
-  font-family: ${({ theme }) => theme.fontFamily.bold};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   font-size: ${({ theme }) => theme.fontSize.xlarge}px;
   color: ${({ theme }) => theme.colors.text.main};
@@ -10,7 +9,6 @@ const Title = styled.h1`
 `;
 
 const SubTitle = styled.h2`
-  font-family: ${({ theme }) => theme.fontFamily.semiBold};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   font-size: ${({ theme }) => theme.fontSize.large}px;
   color: ${({ theme }) => theme.colors.text.secondary};
@@ -18,7 +16,6 @@ const SubTitle = styled.h2`
 `;
 
 const Description = styled.p`
-  font-family: ${({ theme }) => theme.fontFamily.regular};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   font-size: ${({ theme }) => theme.fontSize.regular}px;
   color: ${({ theme }) => theme.colors.text.grey};

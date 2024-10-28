@@ -1,24 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Alert,
   ActivityIndicator,
   Pressable,
-  Image,
-  ImageBackground,
 } from 'react-native';
-import { useLogin, useRegister, useTheme } from '../../shared';
-import Toast from 'react-native-root-toast';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
+import { useRegister, useTheme } from '../../shared';
 import FadeInDown from '../../components/animations/FadeInDown';
 
 export default function RegisterForm({ onLoginPress }) {
-  const navigation = useNavigation();
   const {
     email,
     password,
@@ -29,18 +22,7 @@ export default function RegisterForm({ onLoginPress }) {
     register,
     name,
     setName,
-  } = useRegister({
-    onSuccess: async (data) => {
-      Toast.show('Register successful');
-      await AsyncStorage.setItem('auth', JSON.stringify(data));
-      navigation.navigate('home');
-    },
-    onError: () => {
-      Toast.show('Register failed');
-      setEmail('');
-      setPassword('');
-    },
-  });
+  } = useRegister();
 
   const theme = useTheme();
 

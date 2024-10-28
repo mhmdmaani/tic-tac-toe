@@ -10,7 +10,7 @@ class AuthService {
     console.log('process.env.JWT_SECRET');
     console.log(process.env.JWT_SECRET);
     return jwt.sign(
-      { id: user.id, email: user.email },
+      { id: user.id, email: user.email, name: user.name },
       process.env.JWT_SECRET,
       {
         expiresIn: '1d',

@@ -1,42 +1,43 @@
-import { useState } from 'react';
-import Auth from '../api/Auth';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { validateEmail, validatePassword } from '../utils/validate';
-import { login } from '../store/authSlice';
+import { loginAsync } from '../store/authSlice';
+import { useNavigation } from '@react-navigation/native';
 
-export const useLogin = ({ onSuccess = () => {}, onError = () => {} }) => {
+export const useLogin = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const loading = useSelector((state) => state.auth.loading);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   const dispatch = useDispatch();
 
   const signIn = async () => {
     if (!validateEmail(email)) {
-      setErrors({ email: 'Please enter a valid email address.' });
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: 'Please enter a valid email address.',
+      }));
       return;
     }
-
     if (!validatePassword(password)) {
-      setErrors({ password: 'Password must be at least 5 characters long.' });
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: 'Password must be at least 5 characters long.',
+      }));
       return;
     }
-
-    try {
-      setLoading(true);
-      setErrors({});
-
-      const data = await Auth.login(email, password);
-      console.log(data);
-      dispatch(login(data));
-      setLoading(false);
-      onSuccess(data);
-    } catch (error) {
-      setErrors({ serverError: error.message || 'Login faild failed' });
-      onError(error);
-      setLoading(false);
-    }
+    setErrors({});
+    dispatch(loginAsync({ email, password }));
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigation.navigate('home');
+    }
+  }, [isAuthenticated, navigation]);
 
   return {
     email,

@@ -3,9 +3,9 @@ import axios from 'axios';
 export const BASE_URL = 'http://localhost:8080';
 
 const getToken = () => {
-  const auth = localStorage.getItem('auth');
-  if (auth) {
-    return `Bearer ${JSON.parse(auth).token.replace(/['"]+/g, '')}`;
+  const token = localStorage.getItem('jwtToken');
+  if (token) {
+    return `Bearer ${token.replace(/['"]+/g, '')}`;
   }
   return null;
 };

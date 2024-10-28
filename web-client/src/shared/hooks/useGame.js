@@ -19,7 +19,6 @@ export const useGame = (id) => {
           setIsDone(true);
           return;
         }
-        console.log(result);
         if (result.currentPlayer === 'o') {
           // pc will make a move
           const afterPcMove = await GameSession.pcMove({
@@ -61,7 +60,15 @@ export const useGame = (id) => {
         sessionId: id,
       });
 
+      const checkStatus = await GameSession.checkBoard({
+        board: afterPcMove.board,
+      });
       setBoard(afterPcMove.board);
+      if (checkStatus.status !== 'ongoing') {
+        setStatus(checkStatus.status);
+        setIsDone(true);
+        return;
+      }
     } else {
       setIsDone(true);
     }

@@ -7,6 +7,17 @@ import { SubTitle, Title } from '../../components/Typography';
 import { useRegister } from '../../shared';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+const SecondaryButton = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.primary.main};
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 20px;
+`;
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -60,6 +71,10 @@ function RegisterPage() {
           <PrimaryButton onClick={register} disabled={loading}>
             Register
           </PrimaryButton>
+
+          <SecondaryButton to='/login'>
+            Already have an account? Login
+          </SecondaryButton>
         </Card>
       </FadeInUp>
     </CenteredPageContainer>

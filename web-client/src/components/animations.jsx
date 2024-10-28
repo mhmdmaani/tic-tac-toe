@@ -30,4 +30,19 @@ const FadeInDown = styled.div`
   animation: ${fadeInDown} 0.6s ease-out;
 `;
 
-export { FadeInUp, FadeInDown };
+const zoomIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+const ZoomIn = styled.div`
+  animation: ${zoomIn} 0.6s ease-out;
+`;
+
+export { FadeInUp, FadeInDown, ZoomIn };

@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useTheme, useStats } from '../../shared';
+import { useTheme } from '../../shared';
+import { useSelector } from 'react-redux';
 
 export default function StatsSection() {
-  const { stats, loading } = useStats();
+  const stats = useSelector((state) => state.statistics.data);
+  const loading = useSelector((state) => state.statistics.loading);
   const theme = useTheme();
 
   const styles = StyleSheet.create({

@@ -1,16 +1,18 @@
-import { useState } from 'react';
-import Auth from '../api/Auth';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../store/authSlice';
+import { registerAsync } from '../store/authSlice';
 import { validateEmail, validatePassword } from '../utils/validate';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-export const useRegister = ({ onSuccess = () => {}, onError = () => {} }) => {
+export const useRegister = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const register = async () => {
     if (!validateEmail(email)) {
@@ -22,28 +24,22 @@ export const useRegister = ({ onSuccess = () => {}, onError = () => {} }) => {
       setErrors({ password: 'Password must be at least 8 characters long.' });
       return;
     }
+    setErrors({});
 
-    try {
-      setLoading(true);
-      setErrors({}); // Clear previous errors
-
-      const data = await Auth.register(email, password, name);
-      dispatch(login(data));
-      setLoading(false);
-      onSuccess(data);
-    } catch (error) {
-      setErrors({ serverError: error.error || 'Registration failed' });
-      setLoading(false);
-      onError();
-    }
+    dispatch(registerAsync({ name, email, password }));
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
 
   return {
     name,
     email,
     password,
     errors,
-    loading,
     setName,
     setEmail,
     setPassword,
