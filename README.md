@@ -109,3 +109,30 @@ The FastAPI engine should be running at `http://localhost:8000`.
 ```
 
 The web client should be running at `http://localhost:5173`.
+
+``
+![shot](/assets/12.png)
+
+![shot](/assets/13.png)
+
+![shot](/assets/shot1.png)
+
+![shot](/assets/shot2.png)
+
+![shot](/assets/shot3.png)
+
+![shot](/assets/shot4.png)
+
+![shot](/assets/shot5.png)
+
+![shot](/assets/shot6.png)
+
+![shot](/assets/shot7.png)
+
+![shot](/assets/shot8.png)
+
+![shot](/assets/shot9.png)
+
+![shot](/assets/shot10.png)
+
+![shot](/assets/shot11.png)
