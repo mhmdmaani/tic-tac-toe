@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTheme } from '../../shared';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchStatistics } from '../../shared/store/statisticsSlice';
 
 export default function StatsSection() {
   const stats = useSelector((state) => state.statistics.data);
   const loading = useSelector((state) => state.statistics.loading);
   const theme = useTheme();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchStatistics());
+  }, [dispatch]);
 
   const styles = StyleSheet.create({
     container: {
